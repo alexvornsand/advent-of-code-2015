@@ -135,7 +135,8 @@ def findAValue(input, partTwo = False):
                         assignments.pop(assignments.index(assgn))
     return(map['a'])
 
-print(findAValue(input))
+findAValue(input)
 
-print(findAValue(input, partTwo = True))
+# part 2
+findAValue(input, partTwo = True)
 
