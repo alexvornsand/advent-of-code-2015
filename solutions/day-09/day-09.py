@@ -29,7 +29,7 @@ def getTravelDistance(input, partTwo = False):
     else:
         return(max(travelDistances))
 
-print(getTravelDistance(input))
+getTravelDistance(input)
 
 # part 2
-print(getTravelDistance(input, partTwo = True))
+getTravelDistance(input, partTwo = True)
