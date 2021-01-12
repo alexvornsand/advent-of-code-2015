@@ -33,6 +33,7 @@ def arrangeSeats(input, partTwo = False):
         orders = list(itertools.permutations(list(happinessDict.keys())))
         return(max([arrHappiness(i, 9) for i in orders]))
 
-print(arrangeSeats(input))
+arrangeSeats(input)
 
-print(arrangeSeats(input, partTwo = True))
+# part 2
+arrangeSeats(input, partTwo = True)
