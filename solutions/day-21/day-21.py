@@ -83,23 +83,29 @@ def chooseLoadout(input, partTwo = False):
     }
     boss = [int(x.split(': ')[1]) for x in input.split('\n')]
     def doBattle(plyr, boss, partTwo):
-        allStats = [plyr, boss]
-        turn = 0
-        while True:
-            attackPoints = max([allStats[turn][1] - allStats[abs(turn - 1)][2], 1])
-            allStats[abs(turn - 1)][0] -= attackPoints
-            if partTwo == False:
-                if(allStats[abs(turn - 1)][0] <= 0):
-                    return(turn == 0)
-                else:
-                    turn = abs(turn - 1)
-            else:
-                if(allStats[abs(turn - 1)][0] <= 0):
-                    return(turn == 1)
-                else:
-                    turn = abs(turn - 1)
+        playerAttackPoints = max(plyr[1] - boss[2], 1)
+        bossAttackPoints = max(boss[1] - plyr[2], 1)
+        if partTwo == False:
+            return(-(-boss[0] // playerAttackPoints) <= -(-plyr[0] // bossAttackPoints))
+        else:
+            return(-(-boss[0] // playerAttackPoints) > -(-plyr[0] // bossAttackPoints))
     loadOutCosts = []
     for wpn in weapons.keys():
+        cost = weapons[wpn]['Cost']
+        player = [100, weapons[wpn]['Damage'], 0]
+        if doBattle(player, boss.copy(), partTwo = partTwo):
+            loadOutCosts.append(cost)
+        for rngId in range(len(list(rings.keys()))):
+            cost = weapons[wpn]['Cost'] + rings[list(rings.keys())[rngId]]['Cost']
+            player = [100, weapons[wpn]['Damage'] + rings[list(rings.keys())[rngId]]['Damage'], rings[list(rings.keys())[rngId]]['Armor']]
+            if doBattle(player, boss.copy(), partTwo = partTwo):
+                loadOutCosts.append(cost)
+            if rngId < len(list(rings.keys())) - 1:
+                for rngId2 in range(rngId + 1, len(list(rings.keys()))):
+                    cost = cost = weapons[wpn]['Cost'] + rings[list(rings.keys())[rngId]]['Cost'] + rings[list(rings.keys())[rngId2]]['Cost']
+                    player = [100, weapons[wpn]['Damage'] + rings[list(rings.keys())[rngId]]['Damage'] + rings[list(rings.keys())[rngId2]]['Damage'], rings[list(rings.keys())[rngId]]['Armor'] + rings[list(rings.keys())[rngId2]]['Armor']]
+                    if doBattle(player, boss.copy(), partTwo = partTwo):
+                        loadOutCosts.append(cost)
         for arm in armor.keys():
             cost = weapons[wpn]['Cost'] + armor[arm]['Cost']
             player = [100, weapons[wpn]['Damage'], armor[arm]['Armor']]
@@ -121,8 +127,8 @@ def chooseLoadout(input, partTwo = False):
     else:
         return(max(loadOutCosts))
 
-print(chooseLoadout(input))
+chooseLoadout(input)
 
 # part 2
-print(chooseLoadout(input, partTwo = True))
+chooseLoadout(input, partTwo = True)
 
