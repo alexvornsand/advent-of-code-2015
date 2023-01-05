@@ -46,3 +46,9 @@ vignettes/*.pdf
 
 # Spreadsheet
 *.xlsx
+
+# Jupyter Notebooks
+*.ipynb
+
+# Inputs
+*.txt
