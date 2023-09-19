@@ -1,23 +1,27 @@
 # advent of code 2015
 # day 1
 
-# part 1
-import timeit
-input = open('day-01.txt', 'r').read()
+import itertools
 
-def navigateFloors(input, partTwo = False):
-    inputList = [1 if char == '(' else -1 if char == ')' else 0 for char in input]
-    if partTwo == False:
-        return(sum(inputList))
-    else:
-        i = 0
-        cumSum = 0
-        while(cumSum >= 0):
-            cumSum += inputList[i]
-            i += 1
-        return(i)
+file = 'input.txt'
 
-navigateFloors(input)
+class Directions:
+    def __init__(self, input):
+        self.directions = [{'(': 1, ')': -1}[i] for i in open(input, 'r').read().rstrip()]
+        self.position = list(itertools.accumulate(self.directions))
+    
+def part_1(directions):
+    endPosition = directions.position[-1]
+    print('Part 1:', endPosition, sep='\n')
 
-# part 2
-navigateFloors(input, partTwo = True)
+def part_2(directions):
+    firstBasement = min([i for i in range(len(directions.position)) if directions.position[i] < 0 ]) + 1
+    print('Part 2:', firstBasement, sep='\n')
+
+def main():
+    directions = Directions(file)
+    part_1(directions)
+    part_2(directions)
+
+if __name__ == '__main__':
+    main()
