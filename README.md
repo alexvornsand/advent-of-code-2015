@@ -1,14 +1,52 @@
-# Advent of Code 2020
-A place foPy me to attempt 2020's [Advent of Code](https://adventofcode.com/2020/) challenges
+# Advent of Code 2015
+A place for me to attempt 2015's [Advent of Code](https://adventofcode.com/2015/) challenges
 
-| Day                                   | Part 1 | Part 2 |   | Day                                      | Part 1 | Part 2 |   | Day                          | Part 1 | Part 2 |
-|:--------------------------------------|-------:|-------:|---|:-----------------------------------------|-------:|-------:|---|:-----------------------------|-------:|-------:|
-| [1 (Py)](/solutions/day-01/day-01.py) |        |        |   | [10 (Py)](/solutions/day-10/day-10.py)   |        |        |   | [19 (Py)](/day-19/day-19.py) |        |        |
-| [2 (Py)](/solutions/day-02/day-02.py) |        |        |   | [11 (Py)](/solutions/day-11/day-11.py)   |        |        |   | [20 (Py)](/day-20/day-20.py) |        |        |
-| [3 (Py)](/solutions/day-03/day-03.py) |        |        |   | [12 (Py)](/solutions/day-12/day-12.py)   |        |        |   | [21 (Py)](/day-21/day-21.py) |        |        |
-| [4 (Py)](/solutions/day-04/day-04.py) |        |        |   | [13 (Py)](/solutions/day-13/day-13.py)   |        |        |   | [22 (Py)](/day-22/day-22.py) |        |        |
-| [5 (Py)](/solutions/day-05/day-05.py) |        |        |   | [14 (Py)](/solutions/day-14/day-14.py)   |        |        |   | [23 (Py)](/day-23/day-23.py) |        |        |
-| [6 (Py)](/solutions/day-06/day-06.py) |        |        |   | [15 (Py)](/solutions/day-15/day-15.py)   |        |        |   | [24 (Py)](/day-24/day-24.py) |        |        |
-| [7 (Py)](/solutions/day-07/day-07.py) |        |        |   | [16 (Py)](/solutions/day-16/day-16.py)   |        |        |   | [25 (Py)](/day-25/day-25.py) |        |        |
-| [8 (Py)](/solutions/day-08/day-08.py) |        |        |   | [17 (Py)](/solutions/day-17/day-17.py)   |        |        |   |                              |        |        |
-| [9 (Py)](/solutions/day-09/day-09.py) |        |        |   | [18 (Py)](/solutions/day-18/day-18.py)   |        |        |   |                              |        |        |
+[Day 1 (Python)](/solutions/day-01)
+
+[Day 2 (Python)](/solutions/day-02)
+
+[Day 3 (Python)](/solutions/day-03)
+
+[Day 4 (Python)](/solutions/day-04)
+
+[Day 5 (Python)](/solutions/day-05)
+
+[Day 6 (Python)](/solutions/day-06)
+
+[Day 7 (Python)](/solutions/day-07)
+
+[Day 8 (Python)](/solutions/day-08)
+
+[Day 9 (Python)](/solutions/day-09)
+
+[Day 10 (Python)](/solutions/day-10)
+
+[Day 11 (Python)](/solutions/day-11)
+
+[Day 12 (Python)](/solutions/day-12)
+
+[Day 13 (Python)](/solutions/day-13)
+
+[Day 14 (Python)](/solutions/day-14)
+
+[Day 15 (Python)](/solutions/day-15)
+
+[Day 16 (Python)](/solutions/day-16)
+
+[Day 17 (Python)](/solutions/day-17)
+
+[Day 18 (Python)](/solutions/day-18)
+
+[Day 19 (Python)](/solutions/day-19)
+
+[Day 20 (Python)](/solutions/day-20)
+
+[Day 21 (Python)](/solutions/day-21)
+
+[Day 22 (Python)](/solutions/day-22)
+
+[Day 23 (Python)](/solutions/day-23)
+
+[Day 24 (Python)](/solutions/day-24)
+
+[Day 25 (Python)](/solutions/day-25)
