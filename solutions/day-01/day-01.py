@@ -15,7 +15,9 @@ def part_1(directions):
     print('Part 1:', endPosition, sep='\n')
 
 def part_2(directions):
-    firstBasement = min([i for i in range(len(directions.position)) if directions.position[i] < 0 ]) + 1
+    firstBasement = min(
+        [i for i in range(len(directions.position)) if directions.position[i] < 0 ]
+    ) + 1
     print('Part 2:', firstBasement, sep='\n')
 
 def main():
