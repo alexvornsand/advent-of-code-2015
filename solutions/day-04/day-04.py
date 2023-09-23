@@ -1,23 +1,35 @@
 # advent of code 2015
 # day 4
 
-# part 1
 from hashlib import md5 as md5
 
-input = open('day-04.txt', 'r').read()
+file = 'input.txt'
 
-def findMinHash(input, partTwo = False):
-    i = 0
-    while(True):
-        key = input + str(i)
-        hex = md5(key.encode()).hexdigest()
-        if partTwo == True and ''.join([x for x in hex][0:6]) == '000000':
-            return(i)
-        elif partTwo == False and ''.join([x for x in hex][0:5]) == '00000':
-            return(i)
-        i += 1
+class Key:
+    def __init__(self, key):
+        self.key = key
+        self.index = 0
 
-findMinHash(input)
+    def leading_five(self):
+        while(True):
+            test_key = self.key + str(self.index)
+            if md5(test_key.encode()).hexdigest()[0:5] == '00000':
+                return(self.index)
+            else:
+                self.index += 1
 
-# part 2
-findMinHash(input, partTwo = True)
+    def leading_six(self):
+        while(True):
+            test_key = self.key + str(self.index)
+            if md5(test_key.encode()).hexdigest()[0:6] == '000000':
+                return(self.index)
+            else:
+                self.index += 1
+            
+def main():
+    key = Key(open(file, 'r').read().rstrip())
+    print('Part 1:', key.leading_five(), sep = '\n')
+    print('Part 2:', key.leading_six(), sep = '\n')
+
+if __name__ == '__main__':
+    main()
