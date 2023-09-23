@@ -25,11 +25,17 @@ class Key:
                 return(self.index)
             else:
                 self.index += 1
+
+def part_1(key):
+    print('Part 1:', key.leading_five(), sep = '\n')
+
+def part_2(key):
+    print('Part 2:', key.leading_six(), sep = '\n')
             
 def main():
     key = Key(open(file, 'r').read().rstrip())
-    print('Part 1:', key.leading_five(), sep = '\n')
-    print('Part 2:', key.leading_six(), sep = '\n')
+    part_1(key)
+    part_2(key)
 
 if __name__ == '__main__':
     main()
