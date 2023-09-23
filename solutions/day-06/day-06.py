@@ -1,47 +1,57 @@
 # advent of code 2015
 # day 6
 
-# part 1
-input = open('day-06.txt', 'r').read()
+import re
 
-def countLights(input, partTwo = False):
-    instructions = input.split('\n')
-    grid = []
-    for r in range(1000):
-        if partTwo == False:
-            grid.append([-1] * 1000)
+file = 'input.txt'
+
+class LightGrid:
+    def __init__(self):
+        self.lights = {}
+        self.brightness = {}
+
+    def instructions(self, instr):
+        dir, xmin, ymin, xmax, ymax = re.search('([a-z,\s]+)\s(\d+),(\d+)\sthrough\s(\d+),(\d+)', instr).groups()
+        if dir == 'turn on':
+            for x in range(int(xmin), int(xmax) + 1):
+                for y in range(int(ymin), int(ymax) + 1):
+                    self.lights[(x, y)] = 1
+                    if (x, y) in self.brightness.keys():
+                        self.brightness[(x, y)] += 1
+                    else:
+                        self.brightness[(x, y)] = 1
+        elif dir == 'turn off':
+            for x in range(int(xmin), int(xmax) + 1):
+                for y in range(int(ymin), int(ymax) + 1):
+                    if (x, y) in self.lights.keys():
+                        self.lights.pop((x, y))
+                    if (x, y) in self.brightness.keys():
+                        self.brightness[(x, y)] = max(0, self.brightness[(x, y)] - 1)
         else:
-            grid.append([0] * 1000)
-    for instr in instructions:
-        if 'turn on' in instr:
-            coords = [int(x) for x in ','.join(instr.split('turn on ')[1].split(' through ')).split(',')]
-            for r in range(coords[0], coords[2] + 1):
-                for c in range(coords[1], coords[3] + 1):
-                    if partTwo == False:
-                        grid[r][c] = 1
+            for x in range(int(xmin), int(xmax) + 1):
+                for y in range(int(ymin), int(ymax) + 1):
+                    if (x, y) in self.lights.keys():
+                        self.lights.pop((x, y))
                     else:
-                        grid[r][c] += 1
-        elif 'turn off' in instr:
-            coords = [int(x) for x in ','.join(instr.split('turn off ')[1].split(' through ')).split(',')]
-            for r in range(coords[0], coords[2] + 1):
-                for c in range(coords[1], coords[3] + 1):
-                    if partTwo == False:
-                        grid[r][c] = -1
+                        self.lights[(x, y)] = 1
+                    if (x, y) in self.brightness.keys():
+                         self.brightness[(x, y)] += 2
                     else:
-                        grid[r][c] = max([0, grid[r][c] - 1])
-        else:
-            coords = [int(x) for x in ','.join(instr.split('toggle ')[1].split(' through ')).split(',')]
-            for r in range(coords[0], coords[2] + 1):
-                for c in range(coords[1], coords[3] + 1):
-                    if partTwo == False:
-                        grid[r][c] *= -1
-                    else:
-                        grid[r][c] += 2
-    if partTwo == False:
-        return([item for sublist in grid for item in sublist].count(1))
-    else:
-        return(sum([item for sublist in grid for item in sublist]))
+                         self.brightness[(x, y)] = 2
 
-countLights(input)
+    def countLights(self):
+        return(sum(list(self.lights.values())))
 
-countLights(input, partTwo = True)
+    def countBrightness(self):
+        return(sum(list(self.brightness.values())))
+    
+def main():
+    instructions = open(file, 'r').read().rstrip().split('\n')
+    grid = LightGrid()
+    for instruction in instructions:
+        grid.instructions(instruction)
+    print('part 1:', grid.countLights(), sep = '\n')
+    print('part 2:', grid.countBrightness(), sep = '\n')
+    
+if __name__ == '__main__':
+    main()
